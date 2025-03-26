@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,9 +18,9 @@ public class MyController {
     public String services() {
         return "<h2>Our Services</h2>"
                 + "<ul>"
-                + "<li>Web Development</li>"
-                + "<li>Mobile App Development</li>"
-                + "<li>SEO Optimization</li>"
+                + "<li>Websites</li>"
+                + "<li>Flutter Development</li>"
+                + "<li>Social Media Marketing</li>"
                 + "</ul>";
     }
 
@@ -52,5 +53,35 @@ public class MyController {
                 + "<li>Jane Smith - CTO</li>"
                 + "<li>Michael Brown - Lead Developer</li>"
                 + "</ul>";
+    }
+
+    @GetMapping("greet/{name}")
+    public String greet(@PathVariable String name) {
+        return "Hello, " + name + "!";
+    }
+
+    @GetMapping("square/{num}")
+    public String square(@PathVariable int num) {
+        return "The square of " + num + " is " + (num * num) + ".";
+    }
+
+    @GetMapping("double/{num}")
+    public String doubleValue(@PathVariable int num) {
+        return "Twice the value of " + num + " is " + (num * 2) + ".";
+    }
+
+    @GetMapping("length/{text}")
+    public String length(@PathVariable String text) {
+        return "The length of \"" + text + "\" is " + text.length() + ".";
+    }
+
+    @GetMapping("reverse/{text}")
+    public String reverse(@PathVariable String text) {
+        return "The reverse of \"" + text + "\" is \"" + new StringBuilder(text).reverse().toString() + "\".";
+    }
+
+    @GetMapping("concat/{str1}/{str2}")
+    public String concat(@PathVariable String str1, @PathVariable String str2) {
+        return "Concatenation result: " + str1 + str2;
     }
 }
